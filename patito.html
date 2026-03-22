@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi princesa ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 30px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.corazon {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: caer 5s linear infinite;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="miCancion" loop controls>
+  <source src="cancion.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
+
+<!-- Pantalla inicial -->
+<div class="container" id="inicio">
+  <h1>Esta página es para alguien muy especial… ❤️</h1>
+  <p>Pero solo ella puede entrar 👀</p>
+  <button onclick="entrar()">Soy yo 💖</button>
+
+  <br><br>
+  <button onclick="playMusic()">🎵 Toca aquí… esta canción me recuerda a ti</button>
+</div>
+
+<!-- Contenido -->
+<div class="container hidden" id="contenido">
+  <h1>Para ti, mi princesa 💕</h1>
+
+  <p>
+    Hola mi princesa…<br><br>
+    Sé que apenas llevamos poco tiempo, pero quería hacer algo diferente para ti…<br><br>
+    Me gusta todo de ti… incluso cuando te pones celosa o enojona ❤️<br><br>
+    Eres alguien que me hace sonreír sin darme cuenta.<br><br>
+    Voy en serio contigo… poco a poco, pero bonito 💖<br><br>
+    Gracias por llegar a mi vida ❤️
+  </p>
+
+  <h2>💖 Lo que me gusta de ti</h2>
+  <ul>
+    <li>Tu forma de ser</li>
+    <li>Lo cariñosa que eres</li>
+    <li>Cómo te preocupas por mí</li>
+    <li>Tus celos 😅</li>
+    <li>Tu sonrisa</li>
+  </ul>
+
+  <p><b>Aunque llevamos poco… ya eres muy importante para mí ❤️</b></p>
+
+  <button onclick="mensaje()">No es mucho… pero es todo lo que siento 💌</button>
+</div>
+
+<script>
+// entrar + reproducir música
+function entrar() {
+  document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("contenido").classList.remove("hidden");
+
+  const audio = document.getElementById("miCancion");
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+// botón música
+function playMusic() {
+  const audio = document.getElementById("miCancion");
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+// mensaje final
+function mensaje() {
+  alert("Te quiero mucho, mi princesa ❤️");
+}
+
+// corazones animados
+function crearCorazon() {
+  const corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.innerHTML = "❤️";
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}
+
+setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
